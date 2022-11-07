@@ -1,0 +1,23 @@
+import pymysql
+
+con = pymysql.connect(
+    host='192.168.230.3', 
+    user='jpark', 
+    password='1234',
+    database='madang',
+    port=4567,
+    charset='utf8',
+    autocommit=True
+)
+
+cursor = con.cursor()# Connection 으로부터 Cursor 생성
+sql="SELECT * FROM Book;" 
+cursor.execute(sql)
+con.cursor().execute(  
+   "select * from Book"
+)
+
+rows = cursor.fetchall()
+
+print(rows)
+con.close()
